@@ -32,7 +32,7 @@ def load_keywords():
     # Read Kobak's et al. (2024) findings
     url = "https://raw.githubusercontent.com/berenslab/chatgpt-excess-words/main/results/excess_words.csv"
     df = pd.read_csv(url)
-    keywords = df.iloc[:, 0].tolist()
+    keywords = df.iloc[:, 1].tolist()
     # Add "Utilise", "Utilize", etc.
     additional_keywords = [
         "utilise",
