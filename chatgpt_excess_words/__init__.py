@@ -30,9 +30,10 @@ def extract_text_from_file(uploaded_file):
 
 def load_keywords():
     # Read Kobak's et al. (2024) findings
-    url = "https://raw.githubusercontent.com/berenslab/chatgpt-excess-words/main/results/excess_words.csv"
+    # url = "https://raw.githubusercontent.com/berenslab/chatgpt-excess-words/main/results/excess_words.csv"
+    url = "https://raw.githubusercontent.com/atsyplenkov/detect-chatgpt/main/data/ges_selected_lemma.csv"
     df = pd.read_csv(url)
-    keywords = df.iloc[:, 1].tolist()
+    keywords = df.iloc[:, 0].tolist()
     # Add "Utilise", "Utilize", etc.
     additional_keywords = [
         "utilise",
@@ -43,13 +44,10 @@ def load_keywords():
         "utilized",
         "utilizes",
         "utilises",
-        "leverage"
+        "leverage",
     ]
     # Remove common words
-    common_words = {
-        "https",
-        "github"
-    }
+    common_words = {"https", "github"}
     keywords = [keyword.lower() for keyword in keywords if keyword not in common_words]
     keywords.extend(additional_keywords)
 
