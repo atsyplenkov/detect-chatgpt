@@ -5,6 +5,8 @@ import markdown as md
 import streamlit as st
 
 
+# TODO:
+# Add lemmatization
 def extract_text_from_file(uploaded_file):
     # Get file extension
     file_extension = uploaded_file.name.split(".")[-1]
@@ -31,6 +33,7 @@ def extract_text_from_file(uploaded_file):
 def load_keywords():
     # Read Kobak's et al. (2024) findings
     # url = "https://raw.githubusercontent.com/berenslab/chatgpt-excess-words/main/results/excess_words.csv"
+    # My own list of excess words
     url = "https://raw.githubusercontent.com/atsyplenkov/detect-chatgpt/main/data/ges_selected_lemma.csv"
     df = pd.read_csv(url)
     keywords = df.iloc[:, 1].tolist()
